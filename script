@@ -16,14 +16,24 @@ ChatSpeaker:JoinChannel("All")
 repeat
 	wait()
 	pcall(function()
-		list = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/rowar-banlist/main/database")
+		warlist = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/rowar-banlist/main/database")
 	end)
-until list
+until warlist
+
+repeat
+	wait()
+	pcall(function()
+		xpltlist = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/scc-banlist/main/v1/xplt-database")
+	end)
+until xpltlist
 
 game.Players.PlayerAdded:Connect(function(player)
 	print(player.UserId)
-	if string.match(list, ":"..player.UserId..":") then
+	if string.match(warlist, ":"..player.UserId..":") then
 		ChatSpeaker:SayMessage(player.Name.." has been blocked from joining the server.","All")
-		player:Kick("You have been blacklisted from particpating in the SCC RoWar 2022!")
+		player:Kick("You are not eligible to participate in SCC RoWar 2022! (Banned from RoWar)")
+	elseif string.match(xpltlist, ":"..player.Name..":") then
+		ChatSpeaker:SayMessage(player.Name.." has been blocked from joining the server.","All")
+		player:Kick("You are not eligible to participate in SCC RoWar 2022! (Current SCC Case)")
 	end
 end)
