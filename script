@@ -1,1 +1,22 @@
+--╔══╦═╦═╗╔╦═╦╦═╦╦═╦╦╦═╦══╦╦═╦═╦╦══╗
+--╠╗╚╣╠╣╠╣║║║║║║║║║║║║╩╠╗╔╣║║║║║╠╗╚╣
+--╚══╩═╩═╝╚╩╩═╩╩═╩═╩═╩╩╝╚╝╚╩═╩╩═╩══╝
+--[[Contributors: chumyolk]]
 
+-- SCC RoWar Banlist
+local HttpService = game:GetService("HttpService")
+repeat
+	wait()
+	pcall(function()
+		list = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/rowar-banlist/main/database")
+	end)
+until list
+
+function onPlayerEntered(player)
+	print(player.UserId)
+	if string.find(list, "["..player.UserId.."]") then
+		player:Kick("You have been blacklisted from particpating in the SCC RoWar 2022!")
+	end
+end
+
+game.Players.PlayerAdded:connect(onPlayerEntered)
