@@ -1,3 +1,4 @@
+```lua
 --╔══╦═╦═╗╔╦═╦╦═╦╦═╦╦╦═╦══╦╦═╦═╦╦══╗
 --╠╗╚╣╠╣╠╣║║║║║║║║║║║║╩╠╗╔╣║║║║║╠╗╚╣
 --╚══╩═╩═╝╚╩╩═╩╩═╩═╩═╩╩╝╚╝╚╩═╩╩═╩══╝
@@ -27,4 +28,4 @@ function onPlayerEntered(player)
 	end
 end
 
-game.Players.PlayerAdded:connect(onPlayerEntered)
+game.Players.PlayerAdded:connect(onPlayerEntered)```
