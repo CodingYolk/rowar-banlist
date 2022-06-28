@@ -5,6 +5,13 @@
 
 -- SCC RoWar Banlist
 local HttpService = game:GetService("HttpService")
+local ServerScriptService = game:GetService("ServerScriptService")
+local ChatService = require(ServerScriptService:WaitForChild("ChatServiceRunner"):WaitForChild("ChatService"))
+local ChatSpeaker = ChatService:GetSpeaker("ROWAR BANLIST") or ChatService:AddSpeaker("ROWAR BANLIST")
+ChatSpeaker:SetExtraData("Tags", {{TagText = "SCC"; TagColor = Color3.fromRGB(180, 33, 0)}})
+ChatSpeaker:SetExtraData("NameColor", Color3.fromRGB(0, 0, 127))
+ChatSpeaker:SetExtraData("ChatColor", Color3.fromRGB(0, 0, 255))
+
 repeat
 	wait()
 	pcall(function()
@@ -15,6 +22,7 @@ until list
 function onPlayerEntered(player)
 	print(player.UserId)
 	if string.find(list, "["..player.UserId.."]") then
+		ChatSpeaker:SayMessage(player.Name.." has blocked from joining the server.","All")
 		player:Kick("You have been blacklisted from particpating in the SCC RoWar 2022!")
 	end
 end
