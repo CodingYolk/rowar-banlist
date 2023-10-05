@@ -16,14 +16,14 @@ ChatSpeaker:JoinChannel("All")
 repeat
 	wait()
 	pcall(function()
-		warlist = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/rowar-banlist/main/database")
+		warlist = HttpService:GetAsync("https://raw.githubusercontent.com/CodingYolk/rowar-banlist/main/database")
 	end)
 until warlist
 
 repeat
 	wait()
 	pcall(function()
-		xpltlist = HttpService:GetAsync("https://raw.githubusercontent.com/YolkScripts/scc-banlist/main/v1/xplt-database")
+		xpltlist = HttpService:GetAsync("https://raw.githubusercontent.com/CodingYolk/scc-banlist/main/v1/xplt-database")
 	end)
 until xpltlist
 
